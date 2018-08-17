@@ -1,13 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #e2e1e0;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: white;
 }
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -21,4 +24,30 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+.efecto1 {
+    -webkit-box-shadow: 0 15px 6px -6px #777;
+    -moz-box-shadow: 0 15px 6px -6px #777;
+    box-shadow: 0 15px 6px -6px #777;
+}
+
+
+.cortar {
+    width: 200px;
+    height: 20px;
+    padding: 20px;
+    border: 5px solid blue;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: red;
+}
+
+table.cortar td:hover {
+    width: auto;
+    white-space: initial;
+    overflow: visible;
+    cursor: pointer;
 }

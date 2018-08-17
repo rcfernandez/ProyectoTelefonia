@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoTelefonia.Area>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Administracion de Areas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <p>Area</p>
+            </th>
+            <th>
+                <span>Sub-Areas</span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody class="buscar">
+        @foreach (var item in Model)
+        {
+
+
+            var mostrar = "";
+            if (item.Nombre == "(sin area)")
+            {
+                mostrar = "none";
+            }
+
+            <tr style="display : @mostrar">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @foreach (var item2 in item.SubAreas)
+                    {
+                        <p>@item2.Nombre</p>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil", @style = "font-size: 15px" })&nbsp;
+                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-list", @style = "font-size: 15px" })&nbsp;
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove", @style = "font-size: 15px" })&nbsp;
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

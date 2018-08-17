@@ -1,16 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <!-- SCRIPT DE LA BARRA DE BUSQUEDA -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('#filtrar').keyup(function () {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.buscar tr').hide();
+                    $('.buscar tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+                })
+            }(jQuery));
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(window).load(function () {
+                $(':input:visible:enabled:first').focus();
+            });
+        })
+    </script>
+
 </head>
+
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    @*<div class="jumbotron">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    <div class="logoRegistro pull-left">
+                        <p><a href="Default.aspx"><img src="~/App_Data/img/LogoRegistroCuida.png" width="372" height="66" alt="Internos SENNAF 2018"></a></p>
+                    </div>
+
+                    <div class="logoprinc2 pull-right">
+                        <p><a href="http://www.desarrollosocial.gob.ar/" target="_blank"><img src="~/App_Data/img/logo-ministerio-desarrollo.png" width="260" height="49" alt="Ministerio de Desarrollo Social"></a></p>
+                    </div>
+                    <div class="logoprinc pull-right">
+                        <p><a href="http://www.desarrollosocial.gob.ar/ninezyfamilia" target="_blank"><img src="~/App_Data/img/Barra-sennaf-01.png" width="198" height="34" alt="Secretaría Nacional de Niñez, Adolescencia y Familia"></a></p>
+                    </div>
+
+                </div>
+            </nav>
+        </div>*@
+
+
+    @*<div class="jumbotron">
+            <div class="container">
+                <h1>Bootstrap Tutorial</h1>
+                <p>
+                    Bootstrap is the most popular HTML, CSS, and JS framework for developing
+                    responsive, mobile-first projects on the web.
+                </p>
+            </div>
+        </div>*@
+
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,23 +76,50 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Listado", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>
+                        <!-- barra de busqueda -->
+                        <div class="navbar-form " role="search">
+                            <div class="input-group">
+                                <span class="input-group-addon">Buscar</span>
+                                <input id="filtrar" type="text" class="form-control" autofocus placeholder="Ingrese lo que busca...">
+                            </div>
+                        </div>
+                    </li>
+                    <li>@Html.ActionLink("Internos", "Index", "Internos")</li>
+                    <li>@Html.ActionLink("Directos", "Index", "Directos")</li>
+                    <li>@Html.ActionLink("Sectores", "Index", "SubAreas")</li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Otros <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Pisos", "Index", "Pisos")</li>
+                            <li>@Html.ActionLink("Puestos", "Index", "Puestos")</li>
+                            @*<li class="divider"></li>*@
+                            <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Correos", "Correos", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+
+    <div class="container body-content efecto1">
         @RenderBody()
+        <br />
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p class="text-center">&copy; @DateTime.Now.Year - Version @ViewBag.version</p>
         </footer>
     </div>
 

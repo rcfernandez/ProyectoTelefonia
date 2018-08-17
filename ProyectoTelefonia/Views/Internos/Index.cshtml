@@ -1,0 +1,152 @@
+﻿@model IEnumerable<ProyectoTelefonia.Interno>
+
+@{
+    ViewBag.Title = "Internos Index";
+}
+
+
+<h2>Administracion de Internos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<table class="table table-striped table-condensed">
+
+    <thead>
+        <tr>
+            <th>
+                <span>Interno</span>
+            </th>
+            <th>
+                <span>Area</span>
+            </th>
+            <th>
+                <span>Sub-Area</span>
+            </th>
+            <th>
+                <span>Piso</span>
+            </th>
+            <th>
+                <span>Tipo</span>
+            </th>
+            <th>
+                <span>PuestoTel</span>
+            </th>
+            <th>
+                <span>Puesto</span>
+            </th>
+            <th>
+                <span>TN</span>
+            </th>
+            <th>
+                <span>Estado</span>
+            </th>
+            <th>
+                <span>No Mostrar</span>
+            </th>
+            <th>
+                <span>Observaciones</span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody class="buscar">
+        @foreach (var item in Model)
+        {
+            var clase = "";
+
+            if (item.Estado == "libre")
+            {
+                clase = "success";
+            }
+
+            if (item.Estado == "chequear")
+            {
+                clase = "warning";
+            }
+
+            if (item.Estado == "no funciona")
+            {
+                clase = "danger";
+            }
+
+            <tr class=@clase>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubArea.Area.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubArea.Nombre)
+                </td>
+                <td>
+                    @if (item.SubArea.Pisos.Select(p => p.Numero).FirstOrDefault() == -1L)
+                    {
+                        <span>SS</span>
+                    }
+                    else if (item.SubArea.Pisos.Select(p => p.Numero).FirstOrDefault() == 0L)
+                    {
+                        <span>PB</span>
+                    }
+                    else
+                    {
+                        @item.SubArea.Pisos.Select(p => p.Numero).FirstOrDefault()<span>°</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PuestoTel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Puesto.NumeroTipo)
+                </td>
+                <td class="text-nowrap">
+                    @Html.DisplayFor(modelItem => item.Tn)
+                </td>
+                <td class="text-uppercase">
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @if (item.NoMostrar == true)
+                    {
+                        <span>NM</span>
+                    }
+
+
+                </td>
+                <td>
+                    <p>@item.Observacion</p>
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil", @style = "font-size: 15px" })&nbsp;
+                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-list", @style = "font-size: 15px" })&nbsp;
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove", @style = "font-size: 15px" })&nbsp;
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+@*@{
+        //var contadorTotal = Model.Select(p => p.Numero).ToList().Count();
+        var contadorUsados = Model.Where(i => i.Estado == "usado").Select(p => p.Numero).ToList().Count();
+        var contadorNoFuncionan = Model.Where(i => i.Estado == "no funciona").Select(p => p.Numero).ToList().Count();
+        var contadorChequear = Model.Where(i => i.Estado == "chequear").Select(p => p.Numero).ToList().Count();
+        var contadorLibres = Model.Where(i => i.Estado == "libre").Select(p => p.Numero).ToList().Count();
+        var contadorTotal = contadorUsados + contadorChequear + contadorLibres;
+
+    }
+
+    <h4>En uso = @contadorUsados </h4>
+    <h4>No Funcionan = @contadorNoFuncionan </h4>
+    <h4>Para Chequear = @contadorChequear </h4>
+    <h4>Libres = @contadorLibres </h4>
+    <br />
+    <h4>Total Funcionando = @contadorTotal </h4>*@
