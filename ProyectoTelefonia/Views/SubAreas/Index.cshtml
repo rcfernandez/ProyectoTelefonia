@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoTelefonia.SubArea>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ var contador = 0;}
+
+<h2>Administracion de Sectores</h2>
+
+<p>@Html.ActionLink("Create New", "Create")</p>
+
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>
+                <span></span>
+            </th>
+            <th>
+                <span>Sector</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pisos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Referente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody class="buscar">
+        @foreach (var item in Model)
+        {
+
+            if (item.Nombre != "(sin sub-area)" && item.Internos.Select(i => i.NoMostrar).FirstOrDefault() != true)
+            {
+                <tr>
+                    <td>
+                        @{ contador = contador + 1;}
+                        @contador
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                        <p class="text-muted small">@Html.DisplayFor(modelItem => item.NombreCompleto)</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area.Nombre)
+                    </td>
+                    <td>
+                        @if (item.Pisos.Select(p => p.Numero).FirstOrDefault() == -1L)
+                        {
+                            <span>SS</span>
+                        }
+                        else if (item.Pisos.Select(p => p.Numero).FirstOrDefault() == 0L)
+                        {
+                            <span>PB</span>
+                        }
+                        else
+                        {
+                            @item.Pisos.Select(p => p.Numero).FirstOrDefault()<span>°</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Referente)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil", @style = "font-size: 15px" })&nbsp;
+                        @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-list", @style = "font-size: 15px" })&nbsp;
+                        @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove", @style = "font-size: 15px" })&nbsp;
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </tbody>
+
+</table>

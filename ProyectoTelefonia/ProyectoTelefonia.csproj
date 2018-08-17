@@ -206,12 +206,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PisosController.cs" />
+    <Compile Include="Controllers\PuestosController.cs" />
+    <Compile Include="Controllers\SubAreasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808170352276_Initial.cs" />
-    <Compile Include="Migrations\201808170352276_Initial.Designer.cs">
-      <DependentUpon>201808170352276_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201808172114548_Initial.cs" />
+    <Compile Include="Migrations\201808172114548_Initial.Designer.cs">
+      <DependentUpon>201808172114548_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelDB.cs" />
@@ -302,6 +305,21 @@
     <Content Include="Views\Internos\Details.cshtml" />
     <Content Include="Views\Internos\Edit.cshtml" />
     <Content Include="Views\Internos\Index.cshtml" />
+    <Content Include="Views\Pisos\Create.cshtml" />
+    <Content Include="Views\Pisos\Delete.cshtml" />
+    <Content Include="Views\Pisos\Details.cshtml" />
+    <Content Include="Views\Pisos\Edit.cshtml" />
+    <Content Include="Views\Pisos\Index.cshtml" />
+    <Content Include="Views\Puestos\Create.cshtml" />
+    <Content Include="Views\Puestos\Delete.cshtml" />
+    <Content Include="Views\Puestos\Details.cshtml" />
+    <Content Include="Views\Puestos\Edit.cshtml" />
+    <Content Include="Views\Puestos\Index.cshtml" />
+    <Content Include="Views\SubAreas\Create.cshtml" />
+    <Content Include="Views\SubAreas\Delete.cshtml" />
+    <Content Include="Views\SubAreas\Details.cshtml" />
+    <Content Include="Views\SubAreas\Edit.cshtml" />
+    <Content Include="Views\SubAreas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,8 +338,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808170352276_Initial.resx">
-      <DependentUpon>201808170352276_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808172114548_Initial.resx">
+      <DependentUpon>201808172114548_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

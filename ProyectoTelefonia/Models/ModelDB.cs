@@ -127,6 +127,10 @@
         [Required(ErrorMessage = "Debe ingresar un {0}")]
         public string Nombre { get; set; }
 
+        [Required(ErrorMessage = "Debe ingresar un {0}")]
+        [Display(Name = "Nombre Completo")]
+        public string NombreCompleto { get; set; }
+
         public string Referente { get; set; }
 
         public virtual ICollection<Interno> Internos { get; set; }
