@@ -47,14 +47,14 @@ namespace ProyectoTelefonia.Controllers
             };
         }
 
-        public ActionResult Correos()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Correos()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            ViewBag.correoEjemplo = "AdministradoresGDE@senaf.gob.ar";
+        //    ViewBag.correoEjemplo = "AdministradoresGDE@senaf.gob.ar";
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult About()
         {
@@ -63,11 +63,31 @@ namespace ProyectoTelefonia.Controllers
             return View();
         }
 
+        // GET Contact
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(Contacto contacto)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Contacto.Add(contacto);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(contacto);
+
+        }
+
+
+        public ActionResult ListadoContactos()
+        {
+            return View(db.Contacto.ToList());
+        }
+
     }
 }

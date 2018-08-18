@@ -28,6 +28,7 @@
         public DbSet<SubArea> SubArea { get; set; }
         public DbSet<Puesto> Puesto { get; set; }
         public DbSet<Piso> Piso { get; set; }
+        public DbSet<Contacto> Contacto { get; set; }
     }
 
 
@@ -176,7 +177,30 @@
     }
 
 
+    [Table("Contacto")]
+    public class Contacto
+    {
+        public long Id { get; set; }
 
+        [HiddenInput]
+        [DataType(DataType.DateTime)]
+        public string Fecha { get; set; }
+
+        [Required]
+        public string Nombre { get; set; }
+
+        [Required]
+        [Display(Name = "Correo electrónico")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        public string Estado { get; set; }
+
+        [Display(Name = "Sugerencia")]
+        [StringLength(500, ErrorMessage = "Ha superado la cantidad maxima de {1} caracteres")]
+        [DataType(DataType.MultilineText)]
+        public string Observacion { get; set; }
+    }
 
 
 }
