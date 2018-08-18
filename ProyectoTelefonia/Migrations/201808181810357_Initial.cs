@@ -22,6 +22,7 @@ namespace ProyectoTelefonia.Migrations
                     {
                         Id = c.Long(nullable: false, identity: true),
                         Nombre = c.String(nullable: false),
+                        NombreCompleto = c.String(nullable: false),
                         Referente = c.String(),
                         Area_id = c.Long(nullable: false),
                     })
