@@ -11,6 +11,7 @@ using ProyectoTelefonia.Services;
 
 namespace ProyectoTelefonia.Controllers
 {
+    [Authorize(Roles ="administrador")]
     public class InternosController : Controller
     {
         private ModelDB db = new ModelDB();
@@ -22,6 +23,7 @@ namespace ProyectoTelefonia.Controllers
         {
             return View(db.Interno.OrderBy(i => i.Numero).ToList());
         }
+
 
         // GET: Internos/Details/5
         public ActionResult Details(long? id)

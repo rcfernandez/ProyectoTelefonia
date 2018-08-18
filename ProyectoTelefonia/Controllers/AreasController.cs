@@ -10,6 +10,7 @@ using ProyectoTelefonia;
 
 namespace ProyectoTelefonia.Controllers
 {
+    [Authorize(Roles = "administrador")]
     public class AreasController : Controller
     {
         private ModelDB db = new ModelDB();

@@ -90,23 +90,24 @@
                             </div>
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Internos", "Index", "Internos")</li>
-                    <li>@Html.ActionLink("Directos", "Index", "Directos")</li>
-                    <li>@Html.ActionLink("Sectores", "Index", "SubAreas")</li>
-
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Otros <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Pisos", "Index", "Pisos")</li>
-                            <li>@Html.ActionLink("Puestos", "Index", "Puestos")</li>
-                            @*<li class="divider"></li>*@
-                            <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Correos", "Correos", "Home")</li>
+                    @if (User.IsInRole("administrador"))
+                    {
+                        <li>@Html.ActionLink("Internos", "Index", "Internos")</li>
+                        <li>@Html.ActionLink("Directos", "Index", "Directos")</li>
+                        <li>@Html.ActionLink("Sectores", "Index", "SubAreas")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Otros <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Pisos", "Index", "Pisos")</li>
+                                <li>@Html.ActionLink("Puestos", "Index", "Puestos")</li>
+                                @*<li class="divider"></li>*@
+                                <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
