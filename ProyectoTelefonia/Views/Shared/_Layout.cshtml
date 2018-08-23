@@ -39,35 +39,6 @@
 
 <body>
 
-    @*<div class="jumbotron">
-            <nav class="navbar navbar-static-top">
-                <div class="container">
-                    <div class="logoRegistro pull-left">
-                        <p><a href="Default.aspx"><img src="~/App_Data/img/LogoRegistroCuida.png" width="372" height="66" alt="Internos SENNAF 2018"></a></p>
-                    </div>
-
-                    <div class="logoprinc2 pull-right">
-                        <p><a href="http://www.desarrollosocial.gob.ar/" target="_blank"><img src="~/App_Data/img/logo-ministerio-desarrollo.png" width="260" height="49" alt="Ministerio de Desarrollo Social"></a></p>
-                    </div>
-                    <div class="logoprinc pull-right">
-                        <p><a href="http://www.desarrollosocial.gob.ar/ninezyfamilia" target="_blank"><img src="~/App_Data/img/Barra-sennaf-01.png" width="198" height="34" alt="Secretaría Nacional de Niñez, Adolescencia y Familia"></a></p>
-                    </div>
-
-                </div>
-            </nav>
-        </div>*@
-
-
-    @*<div class="jumbotron">
-            <div class="container">
-                <h1>Bootstrap Tutorial</h1>
-                <p>
-                    Bootstrap is the most popular HTML, CSS, and JS framework for developing
-                    responsive, mobile-first projects on the web.
-                </p>
-            </div>
-        </div>*@
-
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -93,7 +64,7 @@
                     @if (User.IsInRole("administrador"))
                     {
                         <li>@Html.ActionLink("Internos", "Index", "Internos")</li>
-                        
+
                         <li>@Html.ActionLink("Sectores", "Index", "SubAreas")</li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -108,9 +79,15 @@
                             </ul>
                         </li>
                     }
-                    <li>@Html.ActionLink("Sugerencias", "Contact", "Home")</li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @(User.IsInRole("administrador") ? @Html.ActionLink("Sugerencias", "ListadoSugerencias", "Home") : @Html.ActionLink(" Sugerencia", "Contact", "Home"))
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

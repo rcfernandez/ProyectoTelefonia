@@ -47,15 +47,6 @@ namespace ProyectoTelefonia.Controllers
             };
         }
 
-        //public ActionResult Correos()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    ViewBag.correoEjemplo = "AdministradoresGDE@senaf.gob.ar";
-
-        //    return View();
-        //}
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -84,7 +75,7 @@ namespace ProyectoTelefonia.Controllers
         }
 
 
-        public ActionResult ListadoContactos()
+        public ActionResult ListadoSugerencias()    // tabla contacto 
         {
             return View(db.Contacto.ToList());
         }

@@ -320,6 +320,7 @@
     <Content Include="Views\SubAreas\Details.cshtml" />
     <Content Include="Views\SubAreas\Edit.cshtml" />
     <Content Include="Views\SubAreas\Index.cshtml" />
+    <Content Include="Views\Home\ListadoSugerencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
