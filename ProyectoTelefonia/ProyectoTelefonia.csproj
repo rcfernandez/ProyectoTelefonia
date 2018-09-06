@@ -212,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808181810357_Initial.cs" />
-    <Compile Include="Migrations\201808181810357_Initial.Designer.cs">
-      <DependentUpon>201808181810357_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201808232013349_Initial.cs" />
+    <Compile Include="Migrations\201808232013349_Initial.Designer.cs">
+      <DependentUpon>201808232013349_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelDB.cs" />
@@ -339,8 +339,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808181810357_Initial.resx">
-      <DependentUpon>201808181810357_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808232013349_Initial.resx">
+      <DependentUpon>201808232013349_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

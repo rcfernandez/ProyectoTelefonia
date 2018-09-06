@@ -13,7 +13,7 @@ namespace ProyectoTelefonia.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808181810357_Initial"; }
+            get { return "201808232013349_Initial"; }
         }
         
         string IMigrationMetadata.Source

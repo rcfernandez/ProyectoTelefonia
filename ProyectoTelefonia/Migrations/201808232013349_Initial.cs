@@ -88,6 +88,19 @@ namespace ProyectoTelefonia.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Contacto",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Fecha = c.String(),
+                        Nombre = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Estado = c.String(),
+                        Observacion = c.String(maxLength: 500),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.PisoSubAreas",
                 c => new
                     {
@@ -119,6 +132,7 @@ namespace ProyectoTelefonia.Migrations
             DropIndex("dbo.Directo", new[] { "SubArea_id" });
             DropIndex("dbo.SubArea", new[] { "Area_id" });
             DropTable("dbo.PisoSubAreas");
+            DropTable("dbo.Contacto");
             DropTable("dbo.Piso");
             DropTable("dbo.Interno");
             DropTable("dbo.Puesto");
