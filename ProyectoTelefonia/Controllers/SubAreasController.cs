@@ -50,7 +50,7 @@ namespace ProyectoTelefonia.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Referente,Area_id")] SubArea subArea, long id_piso)
+        public ActionResult Create([Bind(Include = "Id,NombreCompleto,Nombre,Referente,Area_id")] SubArea subArea, long id_piso)
         {
             if (ModelState.IsValid)
             {
