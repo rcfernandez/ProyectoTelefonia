@@ -81,7 +81,7 @@ namespace ProyectoTelefonia.Controllers
             }
 
             ViewBag.DDLAreas = db.Area.ToList();
-            ViewBag.DDLPisos = db.Piso.OrderBy(p => p.Numero).ToList();
+            ViewBag.DDLPisos = db.Piso.ToList();
 
             return View(subArea);
         }
@@ -91,25 +91,27 @@ namespace ProyectoTelefonia.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NombreCompleto,Nombre,Referente,Area_id")] SubArea subArea, long id_piso)
+        public ActionResult Edit([Bind(Include = "Id,NombreCompleto,Nombre,Referente,Area_id")] SubArea subArea/*, long id_piso*/)
         {
             if (ModelState.IsValid)
             {
-                // guardamos los datos de la subArea
+                // traemos los datos de la subArea
                 db.Entry(subArea).State = EntityState.Modified;
+
+                // guardamos
                 db.SaveChanges();
 
                 // recuperamos la coleccion de Pisos de la SubArea
-                SubArea sa = db.SubArea.Include(s => s.Pisos).ToList().Find(su => su.Id == subArea.Id);
+                //SubArea sa = db.SubArea.Include(s => s.Pisos).ToList().Find(su => su.Id == subArea.Id);
 
-                //borramos los antiguos Piso.. ojo modificar esto luego ya que borra todos los p
-                sa.Pisos.Clear();
+                ////borramos los antiguos Piso.. ojo modificar esto luego ya que borra todos los p
+                //sa.Pisos.Clear();
 
                 // añadimos el nuevo piso
-                Piso pi = db.Piso.Find(id_piso);
-                subArea.Pisos.Add(pi);
+                //Piso pi = db.Piso.Find(id_piso);
+                //subArea.Pisos.Add(pi);
 
-                db.SaveChanges();
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(subArea);
