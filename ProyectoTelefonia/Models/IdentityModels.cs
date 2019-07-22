@@ -34,5 +34,11 @@ namespace ProyectoTelefonia.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ProyectoTelefonia.Interno> Internoes { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoTelefonia.Puesto> Puestoes { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoTelefonia.SubArea> SubAreas { get; set; }
     }
 }
